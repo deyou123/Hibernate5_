@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)https://gitbook.cn/books/5d14ef2bbec3401546a38cdb/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Hibernate5 之 Hello World 级入门教程</title><meta name="description" content="GitChat 是一款基于微信平台的知识分享产品。通过这款产品我们希望改变IT知识的学习方式。"><meta name="robots" content="index,follow"><meta name="keywords" content="GitChat,机器学习,大数据,程序员,用户体验,软件开发,知识付费,技术分享"><meta name="baidu-site-verification" content="BRkuL6TTfM"><link rel="icon" type="image/png" href="https://images.gitbook.cn/Logo16.png" sizes="16x16"><link rel="icon" type="image/png" href="https://images.gitbook.cn/Logo32.png" sizes="32x32"><link href="./Hibernate5 之 Hello World 级入门教程_files/common.css" rel="stylesheet"><link href="./Hibernate5 之 Hello World 级入门教程_files/bundle2.css" rel="stylesheet"><script type="text/javascript" async="" src="./Hibernate5 之 Hello World 级入门教程_files/analytics.js"></script><script src="./Hibernate5 之 Hello World 级入门教程_files/push.js"></script><script src="./Hibernate5 之 Hello World 级入门教程_files/hm.js"></script><script src="./Hibernate5 之 Hello World 级入门教程_files/js2.js"></script><link href="./Hibernate5 之 Hello World 级入门教程_files/bundle2(1).css" rel="stylesheet"><link href="./Hibernate5 之 Hello World 级入门教程_files/maziArticleV2.css" rel="stylesheet"><link href="./Hibernate5 之 Hello World 级入门教程_files/default.min.css" rel="stylesheet"><script src="./Hibernate5 之 Hello World 级入门教程_files/js2(1).js"></script><script src="./Hibernate5 之 Hello World 级入门教程_files/highlight.min.js"></script><script src="./Hibernate5 之 Hello World 级入门教程_files/qrcode.min.js"></script><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "TechArticle",
+    "headline": "Hibernate5 之 Hello World 级入门教程",
+    "proficiencyLevel": "Expert",
+    "image": "https://images.gitbook.cn/d58e24a0-3291-11e9-b3a9-4f8760d3237f",
+    "author": "愚凡",
+    "genre": "search engine optimization",
+    "keywords": "hibernate5 框架 面试",
+    "wordcount": "11283",
+    "publisher": "GitChat",
+    "url": "http://gitbook.cn/books/5d14ef2bbec3401546a38cdb/index.html",
+    "datePublished": "2019-06-28",
+    "dateCreated": "2019-06-28",
+    "dateModified": "2019-06-28",
+    "description": "从零开始，一步步带你搭建 Hibernate5 开发环境，容易理解上手哦",
+    "articleBody": "&lt;h3 id=&quot;hibernate&quot;&gt;Hibernate 简介&lt;/h3&gt; &lt;p&gt;Hibernate 是一款优秀的持久化框架及优秀的 ORM 框架之一。它通过使用 Java 反射、xml 解析、代理模式等等技术对 JDBC 原有的繁琐的操作步骤进行了简化封装，使得之前 JDBC 代码可能需要几十行代码才能完成的功能，只需几行代码就能搞定。而且开发人员即使不需要熟悉 SQL 也能完成对数据库完成 CRUD 操作。它可以自动生成 SQL 语句，自动执行。完全可以使用面向对象的思想完成对数据库的操作。所以使用 Hibernate 框架可以大大简化了代码和提高了开发的效率。&lt;/p&gt; &lt;h3 id=&quot;orm&quot;&gt;ORM 是什么？&lt;/h3&gt; &lt;p&gt;ORM 即 &lt;code&gt;Object Relation Mapping&lt;/code&gt; 对象关系映射。是一种程序技术，解决一类问题的思路方法，不局限于应用在 Java 语言。用于面向对象语言中完成类和表，属性和表字段转换的映射机制。&lt;/p&gt; &lt;p&gt;​    举例来说：&lt;/p&gt; &lt;p&gt;​    在 Java 有一个实体类 School，在 MySQL 数据库中有一张表 schoolTbl。现在需要完成 Java 中对象数据通过自动化框架持久化到 MySQL 数据库表中。这时对象的属性和表中的列如何对应？ORM 就是解决这样问题的。如图：&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;https://images.gitbook.cn/0ec37540-98f9-11e9-9711-73275fc04c18&quot; alt=&quot;enter image description here&quot; /&gt;&lt;/p&gt; &lt;p&gt;从上图中，可以看到中间映射的作用，就是完成了类属性和表字段的对应映射关系。从而可以实现 School 对象根据映射表生成对应表的 SQL 语句。这就是 ORM 的概念和作用。&lt;/p&gt; &lt;h3 id=&quot;&quot;&gt;搭建环境详细步骤&lt;/h3&gt; &lt;p&gt;​    Hibernate 的其他概念，我们就先不啰嗦了，有需要进一步解释的，可以关注文末我的个人公众号 zp11481062，接下来，我们来介绍 Hibernate 环境搭建步骤。&lt;/p&gt; &lt;h4 id=&quot;1hibernatejar&quot;&gt;1. 下载 Hibernate 类库 jar 包&lt;/h4&gt; &lt;p&gt;​    目前 Hibernate 官网版本已经到 Hibernate6 了，但是还是属于测试阶段，所以我们可以下载最近更新的稳定版 Hibernate5.4.3 版：&lt;/p&gt; &lt;p&gt;下载地址：http://hibernate.org/orm/releases/5.4/&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;https://images.gitbook.cn/1c218bf0-98f9-11e9-9bcf-0fde9181deb1&quot; alt=&quot;enter image description here&quot; /&gt;&lt;/p&gt; &lt;h4 id=&quot;2lib&quot;&gt;2. 解压并找到 lib 目录&lt;/h4&gt; &lt;p&gt;​    在 lib 目录下有一个文件夹 required 下就是 Hibernate 必须的依赖 jar 包&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;https://images.gitbook.cn/2461f930-98f9-11e9-9711-73275fc04c18&quot; alt=&quot;enter image description here&quot; /&gt;&lt;/p&gt; &lt;h4 id=&quot;3ideeclipse&quot;&gt;3. 使用 IDE (本案例使用 Eclipse ) 创建项目工程&lt;/h4&gt; &lt;p&gt;​    本案例使用 Eclipse 新建 web 工程（工程创建步骤省略），然后拷贝上一步的 jar 包到工程下的 lib 目录，另外注意：连接 MySQL 还需要连接 Mysql 的驱动 jar 包，所以也需要提前下载，拷贝进来，如下图：&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;https://images.gitbook.cn/2debfd70-98f9-11e9-9711-73275fc04c18&quot; alt=&quot;enter image description here&quot; /&gt;&lt;/p&gt; &lt;h4 id=&quot;4mysql&quot;&gt;4. 在 MySQL 数据库中创建表&lt;/h4&gt; &lt;pre&gt;&lt;code class=&quot;mysql language-mysql&quot;&gt;-- 创建数据库 CREATE DATABASE hib; -- 打开数据库 USE hib; -- 创建表 CREATE TABLE school(     scid INT PRIMARY KEY AUTO_INCREMENT,     scname VARCHAR(100),     address VARCHAR(200) ); -- 创建学生表 CREATE TABLE student(     sid INT AUTO_INCREMENT PRIMARY KEY,     sname VARCHAR(20),     birthday DATE,     gendar VARCHAR(2),     phone VARCHAR(12) ); -- 插入测试数据 INSERT INTO school(scname,address)VALUES( 西安三中 , 西安市新城区长乐西路 ); &lt;/code&gt;&lt;/pre&gt; &lt;h4 id=&quot;5javaschool&quot;&gt;5. 在 Java 项目中新建实体类 School&lt;/h4&gt; &lt;pre&gt;&lt;code class=&quot;java language-java&quot;&gt;package com.wdzl.entity;  public class School {     private Integer scid;     private String scname;     private String address;      public Integer getScid() {         return scid;     }     public void setScid(Integer scid) {         this.scid = scid;     }     public String getScname() {         return scname;     }     public void setScname(String scname) {         this.scname = scname;     }     public String getAddress() {         return address;     }     public void setAddress(String address) {         this.address = address;     } } &lt;/code&gt;&lt;/pre&gt; &lt;h4 id=&quot;6schoolhbmxml&quot;&gt;6. 新建实体类的映射文件 School.hbm.xml&lt;/h4&gt; &lt;pre&gt;&lt;code&gt; xml 文件名可以自己定义，没有必须的要求。 &lt;/code&gt;&lt;/pre&gt; &lt;pre&gt;&lt;code class=&quot;xml language-xml&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt; &amp;lt;!DOCTYPE hibernate-mapping PUBLIC      &quot;-//Hibernate/Hibernate Mapping DTD 3.0//EN&quot;     &quot;http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd&quot;&amp;gt; &amp;lt;hibernate-mapping&amp;gt;     &amp;lt;class name=&quot;com.wdzl.entity.School&quot; table=&quot;school&quot;&amp;gt;         &amp;lt;!-- id表示主键 --&amp;gt;         &amp;lt;id name=&quot;scid&quot; column=&quot;scid&quot;&amp;gt;              &amp;lt;!-- 主键生成策略，native表示数据库端本地生成策略，比如标识列 --&amp;gt;             &amp;lt;generator class=&quot;native&quot;&amp;gt;&amp;lt;/generator&amp;gt;           &amp;lt;/id&amp;gt;         &amp;lt;!-- 属性和列名对应关系，不过这里属性和列表定义相同了，可以不同的 --&amp;gt;         &amp;lt;property name=&quot;scname&quot; column=&quot;scname&quot;&amp;gt;&amp;lt;/property&amp;gt;         &amp;lt;property name=&quot;address&quot; column=&quot;address&quot;&amp;gt;&amp;lt;/property&amp;gt;     &amp;lt;/class&amp;gt; &amp;lt;/hibernate-mapping&amp;gt; &lt;/code&gt;&lt;/pre&gt; &lt;h4 id=&quot;7hibernate&quot;&gt;7. 新建 Hibernate 的配置文件&lt;/h4&gt; &lt;p&gt;​    Hibernate 框架是对 JDBC 的封装，所以一样是需要 JDBC 连接所需的 url、driver、username、password 这四个参数的，Hibernate 一般是通过配置文件来指定的。所以在 src 目录下新建 xml 文件 hibernate.cfg.xml文件，内容如下：&lt;/p&gt; &lt;pre&gt;&lt;code class=&quot;xml language-xml&quot;&gt;&amp;lt;!DOCTYPE hibernate-configuration PUBLIC     &quot;-//Hibernate/Hibernate Configuration DTD 3.0//EN&quot;     &quot;http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd&quot;&amp;gt; &amp;lt;hibernate-configuration&amp;gt;     &amp;lt;session-factory&amp;gt;         &amp;lt;!-- 数据库方言 --&amp;gt;         &amp;lt;property name=&quot;dialect&quot;&amp;gt;             org.hibernate.dialect.MySQLDialect         &amp;lt;/property&amp;gt;         &amp;lt;!-- 驱动 --&amp;gt;         &amp;lt;property name=&quot;connection.driver_class&quot;&amp;gt;             com.mysql.jdbc.Driver         &amp;lt;/property&amp;gt;         &amp;lt;!-- URL --&amp;gt;         &amp;lt;property name=&quot;connection.url&quot;&amp;gt;             jdbc:mysql://127.0.0.1:3306/hib         &amp;lt;/property&amp;gt;         &amp;lt;!-- 用户名 --&amp;gt;         &amp;lt;property name=&quot;connection.username&quot;&amp;gt;root&amp;lt;/property&amp;gt;         &amp;lt;!-- 密码 --&amp;gt;         &amp;lt;property name=&quot;connection.password&quot;&amp;gt;root&amp;lt;/property&amp;gt;         &amp;lt;!-- 在控制台显示SQL语句 --&amp;gt;         &amp;lt;property name=&quot;show_sql&quot;&amp;gt;true&amp;lt;/property&amp;gt;          &amp;lt;!-- 注册所有ORM映射文件 --&amp;gt;         &amp;lt;mapping resource=&quot;com/wdzl/entity/School.hbm.xml&quot; /&amp;gt;     &amp;lt;/session-factory&amp;gt; &amp;lt;/hibernate-configuration&amp;gt; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;注意：在上面配置文件中，&lt;/p&gt; &lt;pre&gt;&lt;code&gt;&amp;lt;mapping resource=&quot;com/wdzl/entity/School.hbm.xml&quot; /&amp;gt; &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;这个映射文件的引入就是和上一步第 6 步创建的映射文件关联的，所以这里的路径一定要一致，而且注意是路径，不是包结构。&lt;/p&gt; &lt;h4 id=&quot;8&quot;&gt;8. 新建类来测试调用，检查环境&lt;/h4&gt; &lt;p&gt;​    写一个类来根据主键查询对象， Test01.java：&lt;/p&gt; &lt;pre&gt;&lt;code class=&quot;java language-java&quot;&gt;package com.wdzl.test;  import org.hibernate.HibernateException; import org.hibernate.Session; import org.hibernate.SessionFactory; import org.hibernate.cfg.Configuration;  import com.wdzl.entity.School;  public class Test01 {      public static void main(String[] args) {         try {             //加载配置文件             Configuration cfg = new Configuration().configure(&quot;hibernate.cfg.xml&quot;);             //创建会话工厂             SessionFactory factory = cfg.buildSessionFactory();             //创建会话session             Session session = factory.openSession();              //根据主键查询对象             School school = session.get(School.class, 1);             System.out.println(&quot;===&quot;+school);              //关闭会话             session.close();             //关闭工厂 释放资源             factory.close();         } catch (HibernateException e) {              e.printStackTrace();         }     }  } &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;运行结果如下，表示查询到对象数据，成功：&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;https://images.gitbook.cn/44a03720-98f9-11e9-9bcf-0fde9181deb1&quot; alt=&quot;enter image description here&quot; /&gt;&lt;/p&gt; &lt;h4 id=&quot;9&quot;&gt;9.保存对象数据（插入操作）&lt;/h4&gt; &lt;p&gt;通过上面第 8 步，我们就算是完成了 Hibernate5 的环境搭建了，上面是根据主键查询，接下来，写一个保存数据的代码例子：&lt;/p&gt; &lt;pre&gt;&lt;code class=&quot;java language-java&quot;&gt;package com.wdzl.test;  import org.hibernate.HibernateException; import org.hibernate.Session; import org.hibernate.SessionFactory; import org.hibernate.Transaction; import org.hibernate.cfg.Configuration;  import com.wdzl.entity.School;  /**  *     保存数据到数据库  *  */ public class Test02 {      public static void main(String[] args) {         try {             //加载配置文件             Configuration cfg = new Configuration().configure(&quot;hibernate.cfg.xml&quot;);             //创建会话工厂             SessionFactory factory = cfg.buildSessionFactory();             //创建会话session             Session session = factory.openSession();             //开启事务             Transaction tran = session.beginTransaction();              //实例化对象             School school = new School();             school.setScname(&quot;Java一中&quot;);             school.setAddress(&quot;Java三路&quot;);              //持久化             session.save(school);              //提交事务             tran.commit();              //关闭会话             session.close();             //关闭工厂 释放资源             factory.close();         } catch (HibernateException e) {              e.printStackTrace();         }     } } &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;这里就是新实例化一个对象，并赋值，然后通过 session.save() 方法完成数据保存入库操作。步骤最后我们总结。&lt;/p&gt; &lt;h4 id=&quot;10&quot;&gt;10. 数据修改&lt;/h4&gt; &lt;p&gt;下面来看修改代码：&lt;/p&gt; &lt;pre&gt;&lt;code class=&quot;java language-java&quot;&gt;package com.wdzl.test;  import org.hibernate.HibernateException; import org.hibernate.Session; import org.hibernate.SessionFactory; import org.hibernate.Transaction; import org.hibernate.cfg.Configuration;  import com.wdzl.entity.School; /**  *     修改  */ public class Test03 {      public static void main(String[] args) {         try {             //加载配置文件             Configuration cfg = new Configuration().configure(&quot;hibernate.cfg.xml&quot;);             //创建会话工厂             SessionFactory factory = cfg.buildSessionFactory();             //创建会话session             Session session = factory.openSession();             //开启事务             Transaction tran = session.beginTransaction();              //根据主键查询对象             School school = session.get(School.class, 1);              school.setScname(&quot;西安4中&quot;);             //持久化 修改             session.update(school);              //提交事务             tran.commit();             //关闭会话             session.close();             //关闭工厂 释放资源             factory.close();         } catch (HibernateException e) {              e.printStackTrace();         }     } } &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;上面代码需要注意的就是，对于修改，需要先根据主键查询出对象，然后在查出后的对象上做修改，最后持久化到数据库中。为什么要先查询，看下图：&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;https://images.gitbook.cn/4fc37900-98f9-11e9-9711-73275fc04c18&quot; alt=&quot;enter image description here&quot; /&gt;&lt;/p&gt; &lt;p&gt;从图中我们可以看到框架在执行修改操作时，执行的 SQL 语句。比较代码，我们只是修改了 scname 属性，并没有要修改 address 属性，但是框架这里做的是全列修改！所以如果我们不先查询出旧的对象数据，而是新实例化对象执行修改，则会导致，其他没有要修改的属性值，会置空 null 或修改成其他数据。所以一般修改，需要先查询再修改。&lt;/p&gt; &lt;h4 id=&quot;11&quot;&gt;11. 数据删除&lt;/h4&gt; &lt;pre&gt;&lt;code class=&quot;java language-java&quot;&gt;package com.wdzl.test;  import org.hibernate.HibernateException; import org.hibernate.Session; import org.hibernate.SessionFactory; import org.hibernate.Transaction; import org.hibernate.cfg.Configuration;  import com.wdzl.entity.School;  public class Test04 {      public static void main(String[] args) {         try {             //加载配置文件             Configuration cfg = new Configuration().configure(&quot;hibernate.cfg.xml&quot;);             //创建会话工厂             SessionFactory factory = cfg.buildSessionFactory();             //创建会话session             Session session = factory.openSession();             //开启事务             Transaction tran = session.beginTransaction();              //根据主键查询对象             School school = session.get(School.class, 1);              //持久化 删除             session.delete(school);              //提交事务             tran.commit();             //关闭会话             session.close();             //关闭工厂 释放资源             factory.close();         } catch (HibernateException e) {              e.printStackTrace();         }     }  } &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;删除操作，这里也是先查询再删除的，因为 Hibernate 完全面向对象思想来操作的。修改的是对象，删除的也是对象。当然，如果你这里新实例化一个对象，只要指定主键，也是可以删除成功的，不过就不能和缓存同步了而已，具体差别这里不在详述。&lt;/p&gt; &lt;h4 id=&quot;12&quot;&gt;12. 总结&lt;/h4&gt; &lt;p&gt;​    上面代码中，为了方便理解，并没有去封装 session 对象的获取步骤，开发中肯定需要封装成工具类的。&lt;/p&gt; &lt;p&gt;从上面四个的查询、插入、修改、删除操作中，可以归纳 Hibernate 持久化的七个步骤：&lt;/p&gt; &lt;p&gt;​    加载配置文件；&lt;/p&gt; &lt;p&gt;​    创建会话工厂 SessionFactory；&lt;/p&gt; &lt;p&gt;​    创建会话 Session;&lt;/p&gt; &lt;p&gt;​    开启事务；&lt;/p&gt; &lt;p&gt;​    持久化操作；&lt;/p&gt; &lt;p&gt;​    提交事务；&lt;/p&gt; &lt;p&gt;​    关闭会话；&lt;/p&gt; &lt;h4 id=&quot;13&quot;&gt;13. 最后&lt;/h4&gt; &lt;p&gt;​    如果有问题可以随时留言，可以关注个人公众号：java_1995。&lt;/p&gt; &lt;p&gt;​    后续会经常推送技术相关面试题，敬请关注，谢谢&lt;/p&gt; &lt;p&gt;​    源码下载：https://github.com/zp8126/hibernate01&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;https://images.gitbook.cn/5bd623f0-98f9-11e9-9711-73275fc04c18&quot; alt=&quot;enter image description here&quot; /&gt;&lt;/p&gt;"
+}</script><style>.articleDiv img{
+    max-width: 100%;
+    display: block;
+    margin:0 auto;
+}
+blockquote{
+    font-size:16px;
+}
+a{
+    color:#777;
+    text-decoration: none;
+}
+a:hover{
+    color:#FF700A;
+    text-decoration: none;
+}
+.btn{
+    padding: 6px 11px;
+}
+.toc {
+    margin-left: -100px;
+}
+.qr img {
+    margin: 20px auto;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #3f3f3f;
+}
+.dropload-down{
+    display:none;
+}
+.cvip {
+    display: inline-block;
+    float: left;
+    border: 0;
+    margin: 15px 0 0 -66px;
+    width: 55px;
+    height: 55px;
+}
+@media screen and (min-width:481px){
+    .main_view{
+        margin-top:89px;
+        padding:0 25px;
+        border:0;
+    }
+}
+@media screen and (max-width:480px){
+    .main_view{
+        margin-top:64px;
+    }
+}
+#article_content img {
+    cursor: pointer;
+}
+
+#showImageModal .modal-dialog {`
+    max-width: 80%;
+    width: 80%;
+    margin: 0 auto;
+    border: none;
+    box-shadow: none;
+}
+
+#showImageModal .modal-content {
+    margin-top: 100px;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    box-shadow: none;
+}
+
+#showImageModal .modal-body {
+    padding: 0;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    box-shadow: none;
+}
+.cvip2 {
+    display: inline-block;
+    float: left;
+    border: 0;
+    margin: 0px 0 0 -33px;
+    width: 32px;
+    height: 32px;
+}</style><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head><!--link(href='/dist/gitbook/css/backToTop.css', rel='stylesheet')--><body style="background-color: rgb(245, 245, 245);"><div id="MathJax_Message" style="display: none;"></div><link rel="stylesheet" href="./Hibernate5 之 Hello World 级入门教程_files/topV6.css"><div id="header" class="headroom hidden-md hidden-lg top_box animated undefined"><div style="float: left;-webkit-animation-name:none;animation-name:none;" class="container hidden-md hidden-lg hidden-sm"><ul id="gn-menu" class="gn-menu-main"><li class="gn-trigger"><a class="gn-icon gn-icon-menu"><span>Menu</span></a><nav class="gn-menu-wrapper"><div class="gn-scroller"><ul style="border-bottom:0" class="gn-menu"><!--li.gn-search-item--><!--    input.gn-search(id='menuSearchInput' placeholder='文章搜索', type='search')--><!--    a.gn-icon.gn-icon-search--><!--        span Search--><li><a href="https://gitbook.cn/" class="icon lnr-home">首 页</a></li><!--li--><!--    a.icon.lnr-home(style='font-weight:400', href='/gitchat/hot') 热门Chat--><li><a href="https://gitbook.cn/gitchat/columns" class="icon lnr-rocket">课 程</a></li><li><a href="https://gitbook.cn/gitchat/traincamps" class="icon lnr-flag">训 练 营        </a></li><li><a href="https://gitbook.cn/gitchat/series/list" class="icon lnr-diamond">专 题</a></li><li><a href="https://gitbook.cn/gitchat/geekbooks" class="icon lnr-book">电子书</a></li><!--li--><!--    a.icon.lnr-book(style='font-weight:400',href='/gitchat/recruits')  人才--><li><a href="https://gitbook.cn/books/5b398139328f856827673b50/index.html" class="icon lnr-earth">关于我们</a></li><li><a class="icon lnr-text-align-justify">活动分类</a><div class="activity_type clearfix"><a href="https://gitbook.cn/gitchat/categories/58e84f875295227534aad506/1">前端</a><a href="https://gitbook.cn/gitchat/categories/58e84f53ec8e9e7b34457809/2">人工智能</a><a href="https://gitbook.cn/gitchat/categories/58e84f6bad952d6b3428af9a/3">架构</a><a href="https://gitbook.cn/gitchat/categories/5953698a3d38293ecceacb89/4">区块链</a><a href="https://gitbook.cn/gitchat/categories/58e84f1584c651693437f27c/5">职场</a><a href="https://gitbook.cn/gitchat/categories/59c491948fee063dc3c447ab/6">编程语言</a><a href="https://gitbook.cn/gitchat/categories/58e84f31ad952d6b3428af99/7">技术管理</a><a href="https://gitbook.cn/gitchat/categories/58e84f7bec8e9e7b3445780d/8">大数据</a><a href="https://gitbook.cn/gitchat/categories/591171a3e692d5280d8157b6/9">移动开发</a><a href="https://gitbook.cn/gitchat/categories/58e84f2284c651693437f27d/10">产品与运营</a><a href="https://gitbook.cn/gitchat/categories/58e84f425295227534aad502/11">测试</a><a href="https://gitbook.cn/gitchat/categories/591f073981be962a981acf18/12">安全</a><a href="https://gitbook.cn/gitchat/categories/5901bd477b61a76bc4016423/13">运维</a></div><div style="margin:0 auto;width:90%;margin-top: 180px;"></div></li></ul></div></nav></li></ul></div><div class="top_logo_m"><a href="https://gitbook.cn/"><img src="./Hibernate5 之 Hello World 级入门教程_files/FnzjNghzs_ktFPUKeLaFX38rbNsL"></a></div><div class="top_right"><a id="customerProfile" href="javascript:void(0)" role="button" data-toggle="tooltip" title=""><img id="profileImg" src="./Hibernate5 之 Hello World 级入门教程_files/27e23140-f982-11e8-a267-a930610e992d"></a><a href="https://gitbook.cn/mazi/my/activity" role="button" class="hidden-xs top_write"><img src="./Hibernate5 之 Hello World 级入门教程_files/FlbRfjjaZ7IpO0wZSrLH1HCIxa1t">写作</a><!--if !isLogin--><!--    a#newChatBtn.hidden-xs.btn.btn-default(style='display:inline-block;height:35px;color: #5f6f81;float:right;font-size:14px;\--><!--                                border: 1px solid #d1d1d1;-webkit-border-radius: 25px;margin-right: 10px;', href='javascript:void(0) return false;', role='button')--><!--        | 发布Chat--><!--else--><a href="https://gitbook.cn/new/gitchat/activity" role="button" class="hidden-xs top_publish"><img src="./Hibernate5 之 Hello World 级入门教程_files/FqG0F962PDGT8xRa0q78MUPhs-jf">发布 Chat</a></div></div><div class="hidden-xs hidden-sm top_box"><div style="margin:0 auto;max-width: 1180px;"><img src="./Hibernate5 之 Hello World 级入门教程_files/FlwunFEYz1fj4FVYp3TrhOZ4ZgP4" id="download_image"><div class="top_logo"><a href="https://gitbook.cn/"><img src="./Hibernate5 之 Hello World 级入门教程_files/FnzjNghzs_ktFPUKeLaFX38rbNsL"></a></div><div class="top_tabs"><a href="https://gitbook.cn/" class="tab_no_select home_tab">首 页</a><!--if(sortStr == 'hot')--><!--    div(style='display: inline-block;float: left;margin-left: 20px;width: 80px;height: 42px;margin-top: -29px;\--><!--                border-bottom: 4px solid #646464;text-align: center;font-size: 16px;')--><!--        a(href='/gitchat/hot',style='color:#444444') 热门 Chat--><!--else--><!--    div(style='display: inline-block;float: left;margin-left: 20px;width: 80px;height: 42px;margin-top: -29px;\--><!--                text-align: center;font-size: 16px;color: #646464')--><!--        a(href='/gitchat/hot') 热门 Chat--><a href="https://gitbook.cn/gitchat/columns" class="tab_no_select">课 程</a><a href="https://gitbook.cn/gitchat/traincamps" class="tab_no_select">训 练 营    </a><a href="https://gitbook.cn/gitchat/series/list" class="tab_no_select">专 题   </a><a href="https://gitbook.cn/gitchat/geekbooks" class="tab_no_select">电 子 书</a><!--if(sortStr == 'recruits')--><!--    div(style='display: inline-block;float: left;margin-left: 20px;width: 80px;height: 42px;margin-top: -29px;\--><!--        border-bottom: 4px solid #646464;text-align: center;font-size: 16px;')--><!--        a(href='/gitchat/recruits',style='color:#444444') 人才--><!--else--><!--    div(style='display: inline-block;float: left;margin-left: 20px;width: 80px;height: 42px;margin-top: -29px;\--><!--        text-align: center;font-size: 16px;')--><!--        a(href='/gitchat/recruits') 人才--><!--div#aboutusNav(style='display: inline-block;float: left;margin-left: 20px;width: 90px;height: 42px;margin-top: -29px;\--><!--        text-align: center;font-size: 16px;color: #646464')--><!--        a#aboutusLink(href='/aboutus') 关于我们--><!--div#contactUsNav(style='display: inline-block;float: left;margin-left: 20px;width: 90px;height: 42px;margin-top: -29px;\--><!--                text-align: center;font-size: 16px;color: #646464')--><!--    a#contactUsLink(data-toggle="modal" href="#contactUsModal") 联系客服--><div class="search_box"><input id="rightTopSearchInput" type="search" placeholder="搜索"><img src="./Hibernate5 之 Hello World 级入门教程_files/Fmd1PsUVWoQsFv77f9NSt6jCi3EW" class="top_search_img"></div></div><div class="top_right"><a id="customerProfile2" href="javascript:void(0)" role="button" data-toggle="tooltip" title=""><img id="profileImg2" src="./Hibernate5 之 Hello World 级入门教程_files/27e23140-f982-11e8-a267-a930610e992d"></a><!--a#customerProfile2(style='display:inline-block;float:right;height:40px;width: 40px;margin-top:-3px;\--><!--        border: 1px solid #d1d1d1;-webkit-border-radius: 0;margin-right: 10px;', href='javascript:void(0)', role='button',data-toggle="tooltip" title=customerMail)--><!--    img(style='width:24px;height:24px;margin:7px', src='https://images.gitbook.cn/menu.png')--><a href="https://gitbook.cn/mazi/my/activity" role="button" class="hidden-xs top_write"><img src="./Hibernate5 之 Hello World 级入门教程_files/Fg_vm8snlWiYLraM7Xz7snFIJGk2">写作</a><div class="right_line"></div><!--if !isLogin--><!--    a#newChatBtn2.hidden-xs.btn.btn-default(style='display:inline-block;height:35px;color: #5f6f81;float:right;font-size:14px;\--><!--                                        border: 1px solid #d1d1d1;-webkit-border-radius: 25px;margin-right: 10px;', href='javascript:void(0) return false;', role='button')--><!--        | 发布Chat--><!--else--><a href="https://gitbook.cn/new/gitchat/activity" role="button" class="hidden-xs top_publish"><img src="./Hibernate5 之 Hello World 级入门教程_files/Fr00S_tdLGM-sQGvzdc9pbXCrVdF">发布 Chat</a><div class="right_line"></div><div class="hidden-xs download_app"><img src="./Hibernate5 之 Hello World 级入门教程_files/Frw3aLUJKDMp8xDEc_FNQtzrYRMZ" class="down_new"><img src="./Hibernate5 之 Hello World 级入门教程_files/FtL6oL1rhSW8Zv-tzFqbOAQSJoSg" id="download_icon">下载 App<div class="down_line"></div></div></div><div id="thumbClickMenuDIV"><div><ul><li><a href="https://gitbook.cn/gitchat/ordered">已  购</a></li><li><a id="my_vip" href="javascript:void(0);">我的会员</a></li><li class="hidden-md hidden-lg hidden-sm"><a href="javascript:myArtAlert()">我的创作</a></li><li class="hidden-xs"><a href="https://gitbook.cn/mazi/my/activity">我的创作</a></li><li class="hidden-xs"><a href="https://gitbook.cn/gitchat/coupons">我的优惠券</a></li><!--if showRecruit--><!--    li.hidden-xs--><!--        a(href='/mazi/my/recruits') 我的招聘--><!--if showResume--><!--    li.hidden-xs--><!--        a(href='/mazi/resumes') 上传简历--><li><a onclick="configFun()" href="https://gitbook.cn/books/5d14ef2bbec3401546a38cdb/index.html#" data-toggle="modal" data-target="#authorModal">个人设置</a></li><li><a href="https://gitbook.cn/customers/logout">退出登录</a></li></ul></div><s><i></i></s></div></div></div><div id="myArtsAlertModal" style="margin-top: 100px;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" class="modal fade"><div role="document" class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button><h4 id="authorModalLabel" class="modal-title">提示</h4></div><div class="modal-body"><div style="text-align:center;padding-top:10px;">此功能目前只对PC端开放，请用PC访问网站 gitbook.cn</div></div><div style="margin-top: 20px;" class="modal-footer"><button type="button" data-dismiss="modal" class="btn btn-default">返回</button></div></div></div></div><div id="newChatModal" style="margin-top: 100px;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" class="modal fade"><div role="document" class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button><h4 id="newChatLabel" style="text-align:center;" class="modal-title">微信扫码，发起Chat</h4></div><div class="modal-body"><div style="text-align:center;"><img src="./Hibernate5 之 Hello World 级入门教程_files/new_chat_qr_code.jpg" style="width:250px;margin-top:-10px;"></div></div></div></div></div><div id="contactUsModal" style="margin-top: 100px;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" class="modal fade"><div role="document" class="modal-dialog"><div class="modal-content"><div style="text-align:center;" class="modal-header"><h4 id="followWeixinModalLabel" class="modal-title">微信扫描二维码联系客服</h4></div><div style="padding:0;" class="modal-body"><div style="text-align:center;padding-top:10px;"><img src="./Hibernate5 之 Hello World 级入门教程_files/FrlpzkY_9jMjGMSgc4XQFrwy4xf3" style="margin:5px;width:172px;height:172px;"></div></div><div style="margin-top: 10px;text-align:center;" class="modal-footer"><button type="button" data-dismiss="modal" class="btn btn-default">关闭</button></div></div></div><script>// grab an element
+var myElement = document.getElementById("header");
+// construct an instance of Headroom, passing the element
+var headroom  = new Headroom(myElement);
+// initialise
+headroom.init();
+var isPublish = window.location.href.indexOf('new/gitchat/activity');
+var isWrite = window.location.href.indexOf('mazi/my/activity');
+$(function(){
+    var isYearCard = "false";
+    var isNormalCard = "";
+    var vipEndTime = "";
+    if(isPublish != -1){
+        $('.top_publish').css('color','#222');
+        $('.top_publish>img').attr('src','https://images.gitbook.cn/FrSTUMUb5zYIvgSkQfawCwiS6yf_')
+    }else if(isWrite != -1){
+        $('.top_write').css('color','#222');
+        $('.top_write>img').attr('src','https://images.gitbook.cn/Fkqd7_S5kjO79B7z30-z-raHzyF8')
+    }
+    if(isNormalCard == 'true'){
+        var vipObj = {
+            "cardImg": "https://images.gitbook.cn/Fts0XPWoZzTOhFWLuyg-GlswFlwB?imageslim",
+            "className": "normalClass",
+            "textColor": "#46669B",
+            "cardList": ["全场 Chat 免费订", "每月免费学习 2 门达人课", "全站文章和实录免费阅读", "进入上百位专家的读者圈，无限互动与追问"]
+        }
+    }else if(isYearCard=='true'){
+        var vipObj = {
+            "cardImg": "https://images.gitbook.cn/FvC7tICKSIS7XCR0Oftj41OhcpkN?imageslim",
+            "className":"yearClass",
+            "textColor": "#DDC492",
+            "cardList": ["全场 Chat 免费订", "全场达人课免费学", "全站文章和实录免费阅读", "每月免费领一本电子书", "进入上百位专家的读者圈，无限互动与追问"]
+        }
+    }
+    if(isYearCard=='true' || isNormalCard == 'true'){
+        var htmlString = '<div id="vipDialog" class="vip_model"><div class="vip_model_content"><img src="'+vipObj.cardImg+'" class="vip_img"><div class="'+vipObj.className+'">'+vipEndTime+' 到期</div><ul class="vip_list_ul"><li style="color:'+vipObj.textColor+'">会员权益</li>';
+        for(var hIndex = 0;hIndex<vipObj.cardList.length;hIndex++){
+            htmlString += '<li>'+vipObj.cardList[hIndex]+'</li>';
+        }
+        htmlString += '</ul><img src="https://images.gitbook.cn/FoZcXZPNXxknIpi0zhdlAuUCfkJR" class="vip_close"></div></div>';
+        $('body').append(htmlString);
+        $("#my_vip").click(function(){
+            $('#vipDialog').show();
+        })
+        $('.vip_model_content').click(function () {
+            return false;
+        })
+        $('#vipDialog,.vip_close').click(function () {
+            $('#vipDialog').hide();
+        })
+    }
+})
+$('.top_search_img').on('click', function () {
+    var searchKey = $('#rightTopSearchInput').val();
+    window.open("/articles?search=" + searchKey,"_blank");
+})
+$('.top_publish').hover(function(){
+    if(isPublish == -1){
+        $('.top_publish>img').attr('src','https://images.gitbook.cn/FrSTUMUb5zYIvgSkQfawCwiS6yf_')
+    }
+},function(){
+    if(isPublish == -1){
+        $('.top_publish>img').attr('src','https://images.gitbook.cn/Fr00S_tdLGM-sQGvzdc9pbXCrVdF')
+    }
+})
+$('.top_write').hover(function(){
+    if(isWrite == -1){
+        $('.top_write>img').attr('src','https://images.gitbook.cn/Fkqd7_S5kjO79B7z30-z-raHzyF8')
+    }
+},function(){
+    if(isWrite == -1){
+        $('.top_write>img').attr('src','https://images.gitbook.cn/Fg_vm8snlWiYLraM7Xz7snFIJGk2')
+    }
+})
+$('.download_app').hover(function(){
+    $('#download_icon').attr('src','https://images.gitbook.cn/Fi89_kU1_tS-Sm9wAN3_8nBOSr2v');
+    $('.down_line').show();
+    $('#download_image').fadeIn()
+},function(){
+    $('#download_icon').attr('src','https://images.gitbook.cn/FtL6oL1rhSW8Zv-tzFqbOAQSJoSg')
+    $('.down_line').hide();
+    $('#download_image').fadeOut()
+})</script></div><div class="my_container"><div class="mainDiv main_view"><div style="border:0;padding:0 20px 0 20px;background-color:#fff;" class="mazi-columns-container item-container"><h2 style="padding-left:18px;">Hibernate5 之 Hello World 级入门教程</h2><div style="padding: 0 18px;border: 0;margin-top: -16px;" class="mazi-activity-container"><div style="border:0;background-color:#fafafa;" class="mazi-author-describe"><a href="https://gitbook.cn/gitchat/author/5c2f8a9ad88495255020baa4"><img src="./Hibernate5 之 Hello World 级入门教程_files/d58e24a0-3291-11e9-b3a9-4f8760d3237f" class="mazi-activity-holder-cycle-thumb"><img src="./Hibernate5 之 Hello World 级入门教程_files/cvip.png" class="cvip"></a><div class="mazi-activity-author-nd"><div class="mazi-author-name-mine"><div style="color:#036eb8;float:left;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 200px;"><a href="https://gitbook.cn/gitchat/author/5c2f8a9ad88495255020baa4"><span style="color:#036eb8;">愚凡</span></a></div><span style="margin-left: 5px"><span class="avatorStar"></span><span class="avatorStar"></span><span class="avatorStar"></span><span class="avatorStar"></span><style>.avatorStar {
+    display: inline-block;
+    /*background-image: url('https://images.gitbook.cn/star36_on@2x.png');*/
+    background-image: url('https://images.gitbook.cn/FtdV9WYTRquFIIfuwny71IrDzz-S');
+    height: 12px;
+    width: 12px;
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    margin-left: 3px;
+}
+.halfStar{
+    display: inline-block;
+    /*background-image: url('https://images.gitbook.cn/star36_half@2x.png');*/
+    background-image: url('https://images.gitbook.cn/FjBozPVpuon43z4NzwiSxZxg075e');
+    height: 12px;
+    width: 12px;
+    background-size: 6px 12px;
+    background-repeat: no-repeat;
+    margin-left: 3px;
+}</style></span><a id="askBtn" href="https://gitbook.cn/m/mazi/author/5c2f8a9ad88495255020baa4/question" style="cursor:pointer;margin-bottom:10px;background-color:#1169ac;" class="askQuestion">向作者提问</a></div><div style="padding-right:20px;padding-left: 15px;padding-top: 5px;" class="mazi-author-desc">寰讯天翔创始人兼 CTO，曾任华为高级工程师，中软国际技术咨询顾问，知名大学特聘高级讲师。15 年软件开发及教学经验。曾参与华为 Nastar  系统平台的设计与研发，教育厅资源平台研发，Android 游戏《突突兔》，《岛屿守卫者》等游戏作者。</div></div></div></div><a href="https://gitbook.cn/gitchat/activity/5d11c436b429f31bd0a2a27c"><div style="height:50px;line-height:50px;color:#000000;border-bottom:1px solid #efefef;margin: 0 18px;"><span style="margin-left:2px;color:#888;">查看本场Chat</span><span style="height: 50px;float:right;margin-right:8px;color:#888;" class="icon2 lnr-chevron-right"></span></div></a><div id="article_content" class="mazi-article-content dont-break-out"><h3 id="hibernate">Hibernate 简介</h3>
+<p>Hibernate 是一款优秀的持久化框架及优秀的 ORM 框架之一。它通过使用 Java 反射、xml 解析、代理模式等等技术对 JDBC 原有的繁琐的操作步骤进行了简化封装，使得之前 JDBC 代码可能需要几十行代码才能完成的功能，只需几行代码就能搞定。而且开发人员即使不需要熟悉 SQL 也能完成对数据库完成 CRUD 操作。它可以自动生成 SQL 语句，自动执行。完全可以使用面向对象的思想完成对数据库的操作。所以使用 Hibernate 框架可以大大简化了代码和提高了开发的效率。</p>
+<h3 id="orm">ORM 是什么？</h3>
+<p>ORM 即 <code>Object Relation Mapping</code> 对象关系映射。是一种程序技术，解决一类问题的思路方法，不局限于应用在 Java 语言。用于面向对象语言中完成类和表，属性和表字段转换的映射机制。</p>
+<p>​    举例来说：</p>
+<p>​    在 Java 有一个实体类 School，在 MySQL 数据库中有一张表 schoolTbl。现在需要完成 Java 中对象数据通过自动化框架持久化到 MySQL 数据库表中。这时对象的属性和表中的列如何对应？ORM 就是解决这样问题的。如图：</p>
+<p><img src="./Hibernate5 之 Hello World 级入门教程_files/0ec37540-98f9-11e9-9711-73275fc04c18" alt="enter image description here"></p>
+<p>从上图中，可以看到中间映射的作用，就是完成了类属性和表字段的对应映射关系。从而可以实现 School 对象根据映射表生成对应表的 SQL 语句。这就是 ORM 的概念和作用。</p>
+<h3 id="">搭建环境详细步骤</h3>
+<p>​    Hibernate 的其他概念，我们就先不啰嗦了，有需要进一步解释的，可以关注文末我的个人公众号 zp11481062，接下来，我们来介绍 Hibernate 环境搭建步骤。</p>
+<h4 id="1hibernatejar">1. 下载 Hibernate 类库 jar 包</h4>
+<p>​    目前 Hibernate 官网版本已经到 Hibernate6 了，但是还是属于测试阶段，所以我们可以下载最近更新的稳定版 Hibernate5.4.3 版：</p>
+<p>下载地址：http://hibernate.org/orm/releases/5.4/</p>
+<p><img src="./Hibernate5 之 Hello World 级入门教程_files/1c218bf0-98f9-11e9-9bcf-0fde9181deb1" alt="enter image description here"></p>
+<h4 id="2lib">2. 解压并找到 lib 目录</h4>
+<p>​    在 lib 目录下有一个文件夹 required 下就是 Hibernate 必须的依赖 jar 包</p>
+<p><img src="./Hibernate5 之 Hello World 级入门教程_files/2461f930-98f9-11e9-9711-73275fc04c18" alt="enter image description here"></p>
+<h4 id="3ideeclipse">3. 使用 IDE (本案例使用 Eclipse ) 创建项目工程</h4>
+<p>​    本案例使用 Eclipse 新建 web 工程（工程创建步骤省略），然后拷贝上一步的 jar 包到工程下的 lib 目录，另外注意：连接 MySQL 还需要连接 Mysql 的驱动 jar 包，所以也需要提前下载，拷贝进来，如下图：</p>
+<p><img src="./Hibernate5 之 Hello World 级入门教程_files/2debfd70-98f9-11e9-9711-73275fc04c18" alt="enter image description here"></p>
+<h4 id="4mysql">4. 在 MySQL 数据库中创建表</h4>
+<pre><code class="mysql language-mysql">-- 创建数据库
+CREATE DATABASE hib;
+-- 打开数据库
+USE hib;
+-- 创建表
+CREATE TABLE school(
+    scid INT PRIMARY KEY AUTO_INCREMENT,
+    scname VARCHAR(100),
+    address VARCHAR(200)
+);
+-- 创建学生表
+CREATE TABLE student(
+    sid INT AUTO_INCREMENT PRIMARY KEY,
+    sname VARCHAR(20),
+    birthday DATE,
+    gendar VARCHAR(2),
+    phone VARCHAR(12)
+);
+-- 插入测试数据
+INSERT INTO school(scname,address)VALUES('西安三中','西安市新城区长乐西路');
+</code></pre>
+<h4 id="5javaschool">5. 在 Java 项目中新建实体类 School</h4>
+<pre><code class="java language-java hljs"><span class="hljs-keyword">package</span> com.wdzl.entity;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">School</span> </span>{
+    <span class="hljs-keyword">private</span> Integer scid;
+    <span class="hljs-keyword">private</span> String scname;
+    <span class="hljs-keyword">private</span> String address;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Integer <span class="hljs-title">getScid</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> scid;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setScid</span><span class="hljs-params">(Integer scid)</span> </span>{
+        <span class="hljs-keyword">this</span>.scid = scid;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getScname</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> scname;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setScname</span><span class="hljs-params">(String scname)</span> </span>{
+        <span class="hljs-keyword">this</span>.scname = scname;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getAddress</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> address;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setAddress</span><span class="hljs-params">(String address)</span> </span>{
+        <span class="hljs-keyword">this</span>.address = address;
+    }
+}
+</code></pre>
+<h4 id="6schoolhbmxml">6. 新建实体类的映射文件 School.hbm.xml</h4>
+<pre><code class="hljs nginx"> <span class="hljs-attribute">xml</span> 文件名可以自己定义，没有必须的要求。
+</code></pre>
+<pre><code class="xml language-xml hljs"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-meta">&lt;!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">hibernate-mapping</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">class</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"com.wdzl.entity.School"</span> <span class="hljs-attr">table</span>=<span class="hljs-string">"school"</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- id表示主键 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"scid"</span> <span class="hljs-attr">column</span>=<span class="hljs-string">"scid"</span>&gt;</span>
+             <span class="hljs-comment">&lt;!-- 主键生成策略，native表示数据库端本地生成策略，比如标识列 --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">generator</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"native"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">generator</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 属性和列名对应关系，不过这里属性和列表定义相同了，可以不同的 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"scname"</span> <span class="hljs-attr">column</span>=<span class="hljs-string">"scname"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"address"</span> <span class="hljs-attr">column</span>=<span class="hljs-string">"address"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">class</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">hibernate-mapping</span>&gt;</span>
+</code></pre>
+<h4 id="7hibernate">7. 新建 Hibernate 的配置文件</h4>
+<p>​    Hibernate 框架是对 JDBC 的封装，所以一样是需要 JDBC 连接所需的 url、driver、username、password 这四个参数的，Hibernate 一般是通过配置文件来指定的。所以在 src 目录下新建 xml 文件 hibernate.cfg.xml文件，内容如下：</p>
+<pre><code class="xml language-xml hljs"><span class="hljs-meta">&lt;!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd"&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">hibernate-configuration</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">session-factory</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 数据库方言 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"dialect"</span>&gt;</span>
+            org.hibernate.dialect.MySQLDialect
+        <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 驱动 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"connection.driver_class"</span>&gt;</span>
+            com.mysql.jdbc.Driver
+        <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- URL --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"connection.url"</span>&gt;</span>
+            jdbc:mysql://127.0.0.1:3306/hib
+        <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 用户名 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"connection.username"</span>&gt;</span>root<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 密码 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"connection.password"</span>&gt;</span>root<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 在控制台显示SQL语句 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"show_sql"</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+
+        <span class="hljs-comment">&lt;!-- 注册所有ORM映射文件 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">mapping</span> <span class="hljs-attr">resource</span>=<span class="hljs-string">"com/wdzl/entity/School.hbm.xml"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">session-factory</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">hibernate-configuration</span>&gt;</span>
+</code></pre>
+<p>注意：在上面配置文件中，</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">mapping</span> <span class="hljs-attr">resource</span>=<span class="hljs-string">"com/wdzl/entity/School.hbm.xml"</span> /&gt;</span>
+</code></pre>
+<p>这个映射文件的引入就是和上一步第 6 步创建的映射文件关联的，所以这里的路径一定要一致，而且注意是路径，不是包结构。</p>
+<h4 id="8">8. 新建类来测试调用，检查环境</h4>
+<p>​    写一个类来根据主键查询对象， Test01.java：</p>
+<pre><code class="java language-java hljs"><span class="hljs-keyword">package</span> com.wdzl.test;
+
+<span class="hljs-keyword">import</span> org.hibernate.HibernateException;
+<span class="hljs-keyword">import</span> org.hibernate.Session;
+<span class="hljs-keyword">import</span> org.hibernate.SessionFactory;
+<span class="hljs-keyword">import</span> org.hibernate.cfg.Configuration;
+
+<span class="hljs-keyword">import</span> com.wdzl.entity.School;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test01</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">//加载配置文件</span>
+            Configuration cfg = <span class="hljs-keyword">new</span> Configuration().configure(<span class="hljs-string">"hibernate.cfg.xml"</span>);
+            <span class="hljs-comment">//创建会话工厂</span>
+            SessionFactory factory = cfg.buildSessionFactory();
+            <span class="hljs-comment">//创建会话session</span>
+            Session session = factory.openSession();
+
+            <span class="hljs-comment">//根据主键查询对象</span>
+            School school = session.get(School.class, <span class="hljs-number">1</span>);
+            System.out.println(<span class="hljs-string">"==="</span>+school);
+
+            <span class="hljs-comment">//关闭会话</span>
+            session.close();
+            <span class="hljs-comment">//关闭工厂 释放资源</span>
+            factory.close();
+        } <span class="hljs-keyword">catch</span> (HibernateException e) { 
+            e.printStackTrace();
+        }
+    }
+
+}
+</code></pre>
+<p>运行结果如下，表示查询到对象数据，成功：</p>
+<p><img src="./Hibernate5 之 Hello World 级入门教程_files/44a03720-98f9-11e9-9bcf-0fde9181deb1" alt="enter image description here"></p>
+<h4 id="9">9.保存对象数据（插入操作）</h4>
+<p>通过上面第 8 步，我们就算是完成了 Hibernate5 的环境搭建了，上面是根据主键查询，接下来，写一个保存数据的代码例子：</p>
+<pre><code class="java language-java hljs"><span class="hljs-keyword">package</span> com.wdzl.test;
+
+<span class="hljs-keyword">import</span> org.hibernate.HibernateException;
+<span class="hljs-keyword">import</span> org.hibernate.Session;
+<span class="hljs-keyword">import</span> org.hibernate.SessionFactory;
+<span class="hljs-keyword">import</span> org.hibernate.Transaction;
+<span class="hljs-keyword">import</span> org.hibernate.cfg.Configuration;
+
+<span class="hljs-keyword">import</span> com.wdzl.entity.School;
+
+<span class="hljs-comment">/**
+ *     保存数据到数据库
+ *
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test02</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">//加载配置文件</span>
+            Configuration cfg = <span class="hljs-keyword">new</span> Configuration().configure(<span class="hljs-string">"hibernate.cfg.xml"</span>);
+            <span class="hljs-comment">//创建会话工厂</span>
+            SessionFactory factory = cfg.buildSessionFactory();
+            <span class="hljs-comment">//创建会话session</span>
+            Session session = factory.openSession();
+            <span class="hljs-comment">//开启事务</span>
+            Transaction tran = session.beginTransaction();
+
+            <span class="hljs-comment">//实例化对象</span>
+            School school = <span class="hljs-keyword">new</span> School();
+            school.setScname(<span class="hljs-string">"Java一中"</span>);
+            school.setAddress(<span class="hljs-string">"Java三路"</span>);
+
+            <span class="hljs-comment">//持久化</span>
+            session.save(school);
+
+            <span class="hljs-comment">//提交事务</span>
+            tran.commit();
+
+            <span class="hljs-comment">//关闭会话</span>
+            session.close();
+            <span class="hljs-comment">//关闭工厂 释放资源</span>
+            factory.close();
+        } <span class="hljs-keyword">catch</span> (HibernateException e) { 
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+<p>这里就是新实例化一个对象，并赋值，然后通过 session.save() 方法完成数据保存入库操作。步骤最后我们总结。</p>
+<h4 id="10">10. 数据修改</h4>
+<p>下面来看修改代码：</p>
+<pre><code class="java language-java hljs"><span class="hljs-keyword">package</span> com.wdzl.test;
+
+<span class="hljs-keyword">import</span> org.hibernate.HibernateException;
+<span class="hljs-keyword">import</span> org.hibernate.Session;
+<span class="hljs-keyword">import</span> org.hibernate.SessionFactory;
+<span class="hljs-keyword">import</span> org.hibernate.Transaction;
+<span class="hljs-keyword">import</span> org.hibernate.cfg.Configuration;
+
+<span class="hljs-keyword">import</span> com.wdzl.entity.School;
+<span class="hljs-comment">/**
+ *     修改
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test03</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">//加载配置文件</span>
+            Configuration cfg = <span class="hljs-keyword">new</span> Configuration().configure(<span class="hljs-string">"hibernate.cfg.xml"</span>);
+            <span class="hljs-comment">//创建会话工厂</span>
+            SessionFactory factory = cfg.buildSessionFactory();
+            <span class="hljs-comment">//创建会话session</span>
+            Session session = factory.openSession();
+            <span class="hljs-comment">//开启事务</span>
+            Transaction tran = session.beginTransaction();
+
+            <span class="hljs-comment">//根据主键查询对象</span>
+            School school = session.get(School.class, <span class="hljs-number">1</span>);
+
+            school.setScname(<span class="hljs-string">"西安4中"</span>);
+            <span class="hljs-comment">//持久化 修改</span>
+            session.update(school);
+
+            <span class="hljs-comment">//提交事务</span>
+            tran.commit();
+            <span class="hljs-comment">//关闭会话</span>
+            session.close();
+            <span class="hljs-comment">//关闭工厂 释放资源</span>
+            factory.close();
+        } <span class="hljs-keyword">catch</span> (HibernateException e) { 
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+<p>上面代码需要注意的就是，对于修改，需要先根据主键查询出对象，然后在查出后的对象上做修改，最后持久化到数据库中。为什么要先查询，看下图：</p>
+<p><img src="./Hibernate5 之 Hello World 级入门教程_files/4fc37900-98f9-11e9-9711-73275fc04c18" alt="enter image description here"></p>
+<p>从图中我们可以看到框架在执行修改操作时，执行的 SQL 语句。比较代码，我们只是修改了 scname 属性，并没有要修改 address 属性，但是框架这里做的是全列修改！所以如果我们不先查询出旧的对象数据，而是新实例化对象执行修改，则会导致，其他没有要修改的属性值，会置空 null 或修改成其他数据。所以一般修改，需要先查询再修改。</p>
+<h4 id="11">11. 数据删除</h4>
+<pre><code class="java language-java hljs"><span class="hljs-keyword">package</span> com.wdzl.test;
+
+<span class="hljs-keyword">import</span> org.hibernate.HibernateException;
+<span class="hljs-keyword">import</span> org.hibernate.Session;
+<span class="hljs-keyword">import</span> org.hibernate.SessionFactory;
+<span class="hljs-keyword">import</span> org.hibernate.Transaction;
+<span class="hljs-keyword">import</span> org.hibernate.cfg.Configuration;
+
+<span class="hljs-keyword">import</span> com.wdzl.entity.School;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test04</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">//加载配置文件</span>
+            Configuration cfg = <span class="hljs-keyword">new</span> Configuration().configure(<span class="hljs-string">"hibernate.cfg.xml"</span>);
+            <span class="hljs-comment">//创建会话工厂</span>
+            SessionFactory factory = cfg.buildSessionFactory();
+            <span class="hljs-comment">//创建会话session</span>
+            Session session = factory.openSession();
+            <span class="hljs-comment">//开启事务</span>
+            Transaction tran = session.beginTransaction();
+
+            <span class="hljs-comment">//根据主键查询对象</span>
+            School school = session.get(School.class, <span class="hljs-number">1</span>);
+
+            <span class="hljs-comment">//持久化 删除</span>
+            session.delete(school);
+
+            <span class="hljs-comment">//提交事务</span>
+            tran.commit();
+            <span class="hljs-comment">//关闭会话</span>
+            session.close();
+            <span class="hljs-comment">//关闭工厂 释放资源</span>
+            factory.close();
+        } <span class="hljs-keyword">catch</span> (HibernateException e) { 
+            e.printStackTrace();
+        }
+    }
+
+}
+</code></pre>
+<p>删除操作，这里也是先查询再删除的，因为 Hibernate 完全面向对象思想来操作的。修改的是对象，删除的也是对象。当然，如果你这里新实例化一个对象，只要指定主键，也是可以删除成功的，不过就不能和缓存同步了而已，具体差别这里不在详述。</p>
+<h4 id="12">12. 总结</h4>
+<p>​    上面代码中，为了方便理解，并没有去封装 session 对象的获取步骤，开发中肯定需要封装成工具类的。</p>
+<p>从上面四个的查询、插入、修改、删除操作中，可以归纳 Hibernate 持久化的七个步骤：</p>
+<p>​    加载配置文件；</p>
+<p>​    创建会话工厂 SessionFactory；</p>
+<p>​    创建会话 Session;</p>
+<p>​    开启事务；</p>
+<p>​    持久化操作；</p>
+<p>​    提交事务；</p>
+<p>​    关闭会话；</p>
+<h4 id="13">13. 最后</h4>
+<p>​    如果有问题可以随时留言，可以关注个人公众号：java_1995。</p>
+<p>​    后续会经常推送技术相关面试题，敬请关注，谢谢</p>
+<p>​    源码下载：https://github.com/zp8126/hibernate01</p>
+<p><img src="./Hibernate5 之 Hello World 级入门教程_files/5bd623f0-98f9-11e9-9711-73275fc04c18" alt="enter image description here"></p></div><div id="writeCommentDiv" style="text-align:center;padding:15px 0;border-bottom:1px solid #f5f5f5;border-top:1px solid #f5f5f5;"><a id="likeArticle" href="https://gitbook.cn/books/5d14ef2bbec3401546a38cdb/index.html#" onclick="articleFavBtnFun(&#39;5d14ef2bbec3401546a38cdb&#39;,&#39;5c0965fc096a3f65a9830c7d&#39;,this); return false;" style="font-weight:500;line-height:40px;margin:10px 15px;"><span style="vertical-align: middle;color:#ff0000;font-size:26px;" class="icon2 lnr-thumbs-up"></span><span id="favNumText" style="margin-right:10px;color:#555;">5</span></a><a id="unlikeArticle" href="https://gitbook.cn/books/5d14ef2bbec3401546a38cdb/index.html#" onclick="showComplaintModal(); return false;" style="font-weight:500;line-height:40px;margin:10px 15px;"><span style="vertical-align: middle;color:#0000ff;font-size:26px;" class="icon2 lnr-thumbs-down"></span><span id="unlikeNumText" style="margin-right:10px;color:#555;">0</span></a></div><div><div class="col-xs-12 comment-btn-div"><div><button style="margin:20px 0;" onclick="redirectSubmitPage(&quot;null&quot;)" class="mazi-comment-btn">写评论</button></div><div><a href="https://gitbook.cn/m/mazi/author/5c2f8a9ad88495255020baa4/question" style="cursor:pointer;margin-bottom:20px;background-color:#1169ac;" class="btn btn-primary mazi-comment-btn">向作者提问</a></div></div></div><div class="comments"><div id="comments" bookid="5d14ef2bbec3401546a38cdb" comment-num="0"></div><div class="dropload-down" style=""><div class="dropload-refresh"></div></div></div></div></div><div id="commentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" class="modal fade"><div role="document" class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button><h4 style="text-align:center;margin:0;">文章评论</h4></div><div style="padding:15px 30px;" class="modal-body"><div class="row"><div style="text-align:right" class="col-xs-12"><textarea id="comment" rows="7" placeholder="写评论..." style="width:100%;border:1px solid #e1e1e7;-webkit-appearance:none;resize:none;padding:5px;"></textarea><span id="tip">0/200</span></div></div></div><div style="padding:15px;" class="modal-footer"><button id="submitBtn" disabled="disabled" style="width:100%;background:#2F6DFF;" class="btn btn-primary">提交</button></div></div></div></div><link href="./Hibernate5 之 Hello World 级入门教程_files/indexRight.css" rel="stylesheet"><div id="indexRight" style="" class="hidden-xs"><link rel="stylesheet" href="./Hibernate5 之 Hello World 级入门教程_files/indexGitChatRightTop.css"><div class="right_ad_img"><img src="./Hibernate5 之 Hello World 级入门教程_files/FlpK6Zq1QddCmLD56GhhL6s7emns"></div><div class="vip_hot_title">热门分类</div><div class="right_hot_tags"><a href="https://gitbook.cn/gitchat/categories/58e84f875295227534aad506/1" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/FjgoMiaOzWmUU3JgdX3qvkBGGQ91"><span>前端</span></a><a href="https://gitbook.cn/gitchat/categories/58e84f53ec8e9e7b34457809/2" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/FuPwXhHD3AxVmjsNdsmwGMK2Snxm"><span>人工智能</span></a><a href="https://gitbook.cn/gitchat/categories/58e84f6bad952d6b3428af9a/3" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/FmfNJDcE5rxC2X8GjgH8cfc8sFdW"><span>架构</span></a><a href="https://gitbook.cn/gitchat/categories/5953698a3d38293ecceacb89/4" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/Fikw2zHy2kEE5fDxXgnH6aznmCEw"><span>区块链</span></a><a href="https://gitbook.cn/gitchat/categories/58e84f1584c651693437f27c/5" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/FkEA14MZoO2nVDHiO2hRZcNASz14"><span>职场</span></a><a href="https://gitbook.cn/gitchat/categories/59c491948fee063dc3c447ab/6" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/FidoaTbc4rvNKqFISPUs_0_NC1Xd"><span>编程语言</span></a><a href="https://gitbook.cn/gitchat/categories/58e84f31ad952d6b3428af99/7" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/FuMNvLb25yJ4RiEg_2OnS8jpI8aB"><span>技术管理</span></a><a href="https://gitbook.cn/gitchat/categories/58e84f7bec8e9e7b3445780d/8" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/FsAwwVyxgMp5jrw3V1OzBAFRlZXd"><span>大数据</span></a><a href="https://gitbook.cn/gitchat/categories/591171a3e692d5280d8157b6/9" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/FvClrIKCKLu4pj4tys0BMpr3IEy_"><span>移动开发</span></a><a href="https://gitbook.cn/gitchat/categories/58e84f2284c651693437f27d/10" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/FhpGxdtnPjzRslCSUnNKdBXdjGLQ"><span>产品与运营</span></a><a href="https://gitbook.cn/gitchat/categories/58e84f425295227534aad502/11" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/FiDhwLN1jdKDRmYqdySCaKcw-1R3"><span>测试</span></a><a href="https://gitbook.cn/gitchat/categories/591f073981be962a981acf18/12" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/FrRYtPEGuW_ZbSEIUIQRHOPlzVPc"><span>安全</span></a><a href="https://gitbook.cn/gitchat/categories/5901bd477b61a76bc4016423/13" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/Fjz0BDR-Wh44YkTpn0nnZj7jqyyz"><span>运维</span></a></div><div class="right_what_chat"><span>Chat 是什么？</span><a href="https://gitbook.cn/books/5b398139328f856827673b50/index.html" target="_blank" class="right_know_chat"><span>了解更多</span></a></div><div style="background-color:#fff;padding:20px;"><div><span>Chat 是一种全新的阅读/写作互动体验产品。一场 Chat 包含一篇文章和一场为该文章的读者和作者准备的专属线上交流。</span></div><div style="margin-top:20px"><div data-step="4" data-intro="关注GitChat服务号，获取活动状态通知。" style="float:left;"><img src="./Hibernate5 之 Hello World 级入门教程_files/FugaAUCJPglWvm7ZO6Vldhc6Iq6h" height="100" width="100"></div><div style="margin-left:100px;"><div class="right_follow">关注 GitChat 微信公众号</div><div style="color:#95A094;"><ul><li>获得 Chat 邀请</li><li>与作者实时互动</li><li>限时特惠不错过</li></ul></div></div></div><div class="right_box">               <a data-step="1" data-intro="发布Chat活动，开启讲师之旅。" target="_blank" href="https://gitbook.cn/new/gitchat/activity" role="button" class="right_create">创建一场 Chat</a><a target="_blank" href="https://gitbook.cn/application/column" role="button" class="right_become">成为课程作者</a><a target="_blank" href="https://github.com/GitBookCn/GitChat" role="button" class="right_become">说出你的需求</a></div><div class="right_join"><a href="http://gitbook.cn/books/5ad965d38ba0ed4ba9410f27/index.html" target="_blank">加入我们</a><span>|</span><a id="aboutusLink" href="https://gitbook.cn/books/5b398139328f856827673b50/index.html" target="_blank">常见问题</a><span>|</span><a id="contactUsLink" data-toggle="modal" href="https://gitbook.cn/books/5d14ef2bbec3401546a38cdb/index.html#contactUsModal">联系客服</a></div></div><div id="adRight" style="display: none;" class="hidden-xs"><div class="vip_hot_title">热门分类</div><div class="right_hot_tags"><a href="https://gitbook.cn/gitchat/categories/58e84f875295227534aad506/1" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/FjgoMiaOzWmUU3JgdX3qvkBGGQ91"><span>前端</span></a><a href="https://gitbook.cn/gitchat/categories/58e84f53ec8e9e7b34457809/2" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/FuPwXhHD3AxVmjsNdsmwGMK2Snxm"><span>人工智能</span></a><a href="https://gitbook.cn/gitchat/categories/58e84f6bad952d6b3428af9a/3" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/FmfNJDcE5rxC2X8GjgH8cfc8sFdW"><span>架构</span></a><a href="https://gitbook.cn/gitchat/categories/5953698a3d38293ecceacb89/4" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/Fikw2zHy2kEE5fDxXgnH6aznmCEw"><span>区块链</span></a><a href="https://gitbook.cn/gitchat/categories/58e84f1584c651693437f27c/5" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/FkEA14MZoO2nVDHiO2hRZcNASz14"><span>职场</span></a><a href="https://gitbook.cn/gitchat/categories/59c491948fee063dc3c447ab/6" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/FidoaTbc4rvNKqFISPUs_0_NC1Xd"><span>编程语言</span></a><a href="https://gitbook.cn/gitchat/categories/58e84f31ad952d6b3428af99/7" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/FuMNvLb25yJ4RiEg_2OnS8jpI8aB"><span>技术管理</span></a><a href="https://gitbook.cn/gitchat/categories/58e84f7bec8e9e7b3445780d/8" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/FsAwwVyxgMp5jrw3V1OzBAFRlZXd"><span>大数据</span></a><a href="https://gitbook.cn/gitchat/categories/591171a3e692d5280d8157b6/9" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/FvClrIKCKLu4pj4tys0BMpr3IEy_"><span>移动开发</span></a><a href="https://gitbook.cn/gitchat/categories/58e84f2284c651693437f27d/10" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/FhpGxdtnPjzRslCSUnNKdBXdjGLQ"><span>产品与运营</span></a><a href="https://gitbook.cn/gitchat/categories/58e84f425295227534aad502/11" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/FiDhwLN1jdKDRmYqdySCaKcw-1R3"><span>测试</span></a><a href="https://gitbook.cn/gitchat/categories/591f073981be962a981acf18/12" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/FrRYtPEGuW_ZbSEIUIQRHOPlzVPc"><span>安全</span></a><a href="https://gitbook.cn/gitchat/categories/5901bd477b61a76bc4016423/13" target="_blank" class="right_tag_item"><img src="./Hibernate5 之 Hello World 级入门教程_files/Fjz0BDR-Wh44YkTpn0nnZj7jqyyz"><span>运维</span></a></div><script>if(!showCount){
+    //当没定义距离时为正常高度，定义了为长标签高度
+    var showCount = 1800;
+}
+window.onscroll = function () {
+    var topCount = $(document).scrollTop();
+    if(topCount>showCount){
+        $('#adRight').show();
+    }else{
+        $('#adRight').hide();
+    }
+}
+//定位广告
+//- $(window).resize(function(){
+//-     let leftPosition = $('#indexRight').offset().left+10;
+//-     if(leftPosition<100){
+//-         $('#adRight').hide();
+//-     }else{
+//-         $('#adRight').css('left',leftPosition);
+//-     }
+
+//- });</script></div></div></div><script src="./Hibernate5 之 Hello World 级入门教程_files/wxLogin.js"></script><div class="fat-nav"><div class="fat-nav__wrapper"><div style="margin: 0 auto;font-size: 30px;color: #ffffff;text-align: center;margin-top: 60px;"><img style="width: 50px;" src="./Hibernate5 之 Hello World 级入门教程_files/FnzjNghzs_ktFPUKeLaFX38rbNsL"></div><div id="loginInputDiv" style="width: 100%"><div style="text-align:center;color: #ffffff;margin-top:10px;font-size: 16px;letter-spacing: 2px;">微信扫描登录</div><div id="login_container" style="text-align: center;height: 250px;"></div></div></div></div><div id="authorModal" style="margin-top: 60px;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" class="modal fade"><div role="document" class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button><h4 id="authorModalLabel" class="modal-title">帐号设置</h4></div><div class="modal-body"><div style="display:inline-block;width: 100%;"><div style="display:inline;float:left;padding: 20px 0 0 10px;min-width: 280px;"><div id="authorThumb" style="display: inline-block;float:left;width: 100px;height: 100px;border: 1px solid #cccccc;margin-right: 20px;line-height: 100px;font-size: 30px;text-align: center;-webkit-border-radius: 50px;margin-bottom:20px;background-size:100px 100px;background-repeat:no-repeat;background-image:url(&quot;https://images.gitbook.cn/27e23140-f982-11e8-a267-a930610e992d&quot;)"></div><form id="thumbUploadForm" style="margin-top:25px;" method="post" action="https://gitbook.cn/upload/book/image" enctype="multipart/form-data"><div style="display: inline" class="form-group"><a href="javascript:;" class="file">选择头像<input id="thumbInputFile" type="file" name="tmpFile" onchange="javascript:submitThumbForm()"></a><p style="font-size:12px;" class="help-block">最佳分辨率：200*200像素</p></div></form></div><!--if customerAccountStatus == 'onlymail'--><!--    div.hidden-xs(style='display:inline;float:right;width:50%;height: 220px;text-align: center;')--><!--        span 绑 定 微 信 帐 号--><!--        div#bandweixin(style='height: 220px;overflow: hidden;')--><!--    script.--><!--        if (!(/MicroMessenger/i).test(window.navigator.userAgent)) {--><!--            var state = encodeURI(window.location.href);--><!--            $.ajax ({--><!--                url: "/weixin/bind/weixin/qr",--><!--                type: "POST",--><!--                dataType: "json",--><!--                contentType: "application/json; charset=utf-8",--><!--                success: function(data,status){--><!--                    if(data.code == 0){--><!--                        var obj = new WxLogin({--><!--                            id:"bandweixin",--><!--                            appid: data.appId,--><!--                            scope: data.scope,--><!--                            redirect_uri: data.redirectUrl,--><!--                            state: state,--><!--                            style: "black",--><!--                            href: "https%3A%2F%2Foabbwo5lj.qnssl.com%2FweixinLoginQr2.css"--><!--                            });--><!--                    }--><!--                }--><!--            });--><!--        }--><div style="display:inline;float:right;width:50%;height: 180px;text-align: center;border-left:1px dashed #f5f5f5;" class="hidden-xs"><div style="margin-top:30px;">已绑定微信帐号</div><div style="height: 180px;overflow: hidden;margin-top:10px;"><img width="50px;" src="./Hibernate5 之 Hello World 级入门教程_files/wechat-logo.png"><span style="margin-left:20px;">Daniel</span></div></div></div><div style="display:inline-block;width:100%;border-top:1px dashed #f5f5f5;height:20px;"></div><div style="display:inline-block;width:100%;"><div style="float:left;line-height:30px;">昵   称:</div><div style="margin-left:70px;"><input id="authorName" style="margin-bottom: 10px;" type="text" placeholder="用户昵称" value="Daniel" class="form-control"></div></div><div style="display:inline-block;width:100%;"><div style="float:left;line-height:30px;">微信号:</div><div style="margin-left:70px;"><input id="weixinAccount" style="margin-bottom: 10px;" type="text" placeholder="不填写微信号就不能发布Chat活动哦^_^" class="form-control"></div></div><div style="display:inline-block;width:100%;"><div style="float:left;line-height:30px;">头   衔:</div><div style="margin-left:70px;"><input id="authorTitle" style="margin-bottom: 10px;" type="text" placeholder="用户头衔" value="" class="form-control"></div></div><div style="display:inline-block;width:100%;"><div style="float:left;line-height:30px;">背景介绍:</div><div style="margin-left:70px;"><textarea id="authorBackground" style="margin-bottom: 10px;" rows="3" placeholder="用户背景简介" class="form-control"></textarea><input id="hideCustomerThumbImage" style="display:none"></div></div><div style="font-size: 25px;line-height: 35px;"></div><div id="thumbUploadingAlertDiv" style="display:none;margin-top: 50px;margin-bottom: -20px;" class="alert alert-info">正在上传头像，请稍等......</div><div id="updatingAlertDiv" style="display:none;margin-top: 50px;margin-bottom: -20px;" class="alert alert-info">正在更新，请稍等......</div><div id="emailCheckAlertDiv" style="display:none;margin-top: 50px;margin-bottom: -20px;" class="alert alert-danger">邮件地址格式不正确，请重新填写</div><div id="dupEmailAlertDiv" style="display:none;margin-top: 50px;margin-bottom: -20px;" class="alert alert-danger">此邮件地址已经被其他用户使用</div></div><div style="margin-top: 20px;" class="modal-footer"><button type="button" data-dismiss="modal" class="btn btn-default">取消</button><button id="authorSubmitBtn" type="button" data-dismiss="modal" class="btn btn-primary">保存</button></div></div></div></div><script src="./Hibernate5 之 Hello World 级入门教程_files/jquery.fatNav.js"></script><a style="display: none;" id="hamburger" href="javascript:void(0)" class="hamburger"><div class="hamburger__icon"></div></a><script>new gnMenu( document.getElementById( 'gn-menu' ) );</script><div id="complaintModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" class="modal fade"><div role="document" class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button><div style="margin:15px 5px;">Hibernate5 之 Hello World 级入门教程</div></div><div style="padding-bottom:10px;" class="modal-body"><div style="margin-bottom:5px;">请写下您的意见：</div><div><textarea id="complaintContent" rows="7" placeholder="GitChat 工作人员将会收到您的反馈，并尽快作出处理！" style="width:100%;border:1px solid #cccccc;-webkit-appearance:none;"></textarea></div></div><div class="modal-footer"><button style="width:100%" onclick="articleUnlikeBtnFun(&#39;5d14ef2bbec3401546a38cdb&#39;,&#39;5c0965fc096a3f65a9830c7d&#39;,this); return false;" class="btn btn-primary">提交</button></div></div></div></div><div id="buyForGroupTips" style="margin-top: 100px;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" class="modal fade"><div role="document" class="modal-dialog"><div class="modal-content"><div style="text-align:center;" class="modal-header"><h4 id="buyForGroupTipsLabel" class="modal-title">提 示</h4></div><div style="padding:10px 20px 5px 20px;line-height:30px;" class="modal-body"><div id="buyForGroupTipsTips" style="text-align: center;">购买Chat后即可去读者圈向作者提问！</div></div><div style="margin-top: 10px;text-align:center;" class="modal-footer"><button type="button" data-dismiss="modal" onclick="goToActivityPage(&#39;5d11c436b429f31bd0a2a27c&#39;)" class="btn btn-default">去购买</button></div></div></div></div><div id="showImageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" class="modal fade"><div role="document" data-dismiss="modal" class="modal-dialog"><div class="modal-content"><div class="modal-body"><img id="big_img" src="https://gitbook.cn/books/5d14ef2bbec3401546a38cdb/index.html"></div></div></div></div><!--#elevator_item--><!--    a#elevator(onclick='return false;', title='Back To Top')--><!--    a.qr--><!--    .qr-popup--><!--        a.code-link--><!--            img.code(src='https://images.gitbook.cn/FugaAUCJPglWvm7ZO6Vldhc6Iq6h')--><!--        span 微信扫码关注--><!--        .arr--><script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({messageStyle: "none",CommonHTML: {linebreaks: {automatic: true}},tex2jax: {inlineMath: [['$$','$$'],['$','$'], ['\\(','\\)']], processClass: "mathjax",ignoreClass: "no-mathjax"}});</script><script type="text/javascript" async="" src="./Hibernate5 之 Hello World 级入门教程_files/MathJax.js"></script><script>hljs.initHighlightingOnLoad();</script><script>$(function () {
+    $(window).scroll(function () {
+        var scrolltop = $(this).scrollTop();
+        if (scrolltop >= 2000) {
+            $("#elevator_item").show();
+        } else {
+            $("#elevator_item").hide();
+        }
+    });
+    $("#elevator").click(function () {
+        $("html,body").animate({scrollTop: 0}, 500);
+    });
+    $(".qr").hover(function () {
+        $(".qr-popup").show();
+    }, function () {
+        $(".qr-popup").hide();
+    });
+    $('#article_content img').click(function(){
+    $('#big_img').attr('src',$(this).attr('src'));
+    $('#showImageModal').modal('show');
+})
+});
+function showloginDiv() {
+    $('#hamburger').show();
+    $('#loginInputDiv').show();
+    $('#loginSubmittedDiv').hide();
+    $('#mailAddressInvalidDiv').hide();
+    fatNav.toggleNav();
+}
+function goToActivityPage(activityId) {
+    window.location.href = '/gitchat/activity/' + activityId;
+}</script><script async="" src="./Hibernate5 之 Hello World 级入门教程_files/js"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+var userId = '5c0965fc096a3f65a9830c7d';
+if(userId && userId != '' && userId != 'do_not_exist'){
+    gtag('set', {'user_id': userId});
+}
+gtag('config', 'UA-96766334-1');
+var gEvent = ''
+if (gEvent && gEvent != '') {
+    gtag('event', gEvent);
+}</script><script>var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?5667c6d502e51ebd8bd9e9be6790fb5d";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();</script><script>(function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();</script><!--script(src='/dist/gitbook/js/csdn_ad.js')--><script>var readerCustomerId = '5c0965fc096a3f65a9830c7d';
+var readingChatId = '5d11c436b429f31bd0a2a27c';
+var readingColumnId = '';
+var readingGeekbookId = '';
+function getReferrer() {
+    var referrer = "";
+    try {
+        referrer = window.top.document.referrer
+    } catch (e) {
+        if (window.parent) {
+            try {
+                referrer = window.parent.document.referrer
+            } catch (e2) {
+                referrer = ""
+            }
+        }
+    }
+    if (referrer === "") {
+        referrer = document.referrer
+    }
+    return referrer
+}
+
+var tjSecond = 0;
+var tjRandom = 0;
+window.setInterval(function () {
+    tjSecond++
+}, 1000);
+tjRandom = (new Date()).valueOf();
+window.onbeforeunload = function () {
+    if (
+        readerCustomerId && readerCustomerId != ''
+        &&
+        (
+            (readingChatId && readingChatId != '')||
+            (readingColumnId && readingColumnId !='')||
+            (readingGeekbookId && readingGeekbookId != '')
+        )
+    ) {
+        var params = {};
+        params.tjRd = tjRandom;
+        params.url = location.href;
+        params.time = tjSecond;
+        params.timeIn = Date.parse(new Date()) - (tjSecond * 1000);
+        params.timeOut = Date.parse(new Date());
+        params.title = document.title;
+        params.domain = document.domain;
+        params.sh = window.screen.height;
+        params.sw = window.screen.width;
+        params.language = navigator.language;
+        params.refer = getReferrer();
+        params.readerCustomerId = readerCustomerId;
+        params.readingChatId = readingChatId;
+        params.readingColumnId = readingColumnId;
+        params.readingGeekbookId = readingGeekbookId;
+        $.ajax({
+            url: "/m/track/reading/time",
+            type: "POST",
+            data: JSON.stringify(params),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data, status) {
+
+            }
+        });
+    }
+
+};</script></body></html>
